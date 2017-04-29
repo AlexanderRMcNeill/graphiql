@@ -1,4 +1,11 @@
+var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const GLOBALS = {
+  'process.env.NODE_ENV': JSON.stringify('production'),
+  __DEV__: false
+};
 
 module.exports = {
   entry: './client/index.js',
@@ -6,6 +13,11 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'server/public')
   },
+  plugins: [
+    new webpack.DefinePlugin(GLOBALS),
+    new ExtractTextPlugin('style.css'),
+    new webpack.optimize.UglifyJsPlugin()
+  ],
   module: {
     loaders: [
       {
@@ -18,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.css$/, 
-        loader: "style-loader!css-loader"
+        loader: ExtractTextPlugin.extract("css-loader")
       }
     ]
   }

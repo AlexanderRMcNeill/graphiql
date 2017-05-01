@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 # Building front end assets
-RUN npm install && npm build && rm -r node_modules && npm cache clean
+RUN npm install && npm run build && rm -r node_modules && npm cache clean
 
 # Switching to server folder and installing server packages
 WORKDIR /usr/src/app/server

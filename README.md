@@ -23,7 +23,10 @@ If you just want to run the express server on your machine follow these steps:
 
 #### Docker
 
-To run the website in a docker container follow these steps:
+To run the website in a docker container run: 
+```docker run -d --name <container name> -p <port>:3000 -e GRAPHQL_SERVER_URL=<GraphQL Server Url> alexandermcneill/graphiql_website```
+
+If you want to build the image yourself run the following:
 
 - Install the packages by running ```npm install```
 - Build the frontend assets by running ```npm run build```

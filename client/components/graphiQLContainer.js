@@ -24,8 +24,10 @@ export default class GraphiQLContainer extends React.Component {
     }
 
     render() {
+        const { query } = this.props;
+
         return (
-            <GraphiQL fetcher={this.graphQLFetcher}>
+            <GraphiQL fetcher={this.graphQLFetcher} query={query}>
                 <GraphiQL.Logo>
                     <span>Graph<em>i</em>QL ~ {this.props.baseUrl || "No URL defined"}</span>
                 </GraphiQL.Logo>

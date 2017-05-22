@@ -3,8 +3,7 @@ export function getUrlParam(name) {
     if(!window.location.search) return;
 
     // Getting the query without the ?
-    const parametersString = window.location.search.substring(1);
-
+    const parametersString = decodeURI(window.location.search.substring(1));
 
     let params = {}
     parametersString.split('&')
